@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2021 (x64) (http://www.altova.com) by Jose Arias (Educastur) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="sistemasImpresion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="impresoras">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="impresora" type="impresoraType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="cartuchos">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="cartucho" type="cartuchoType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="marcas">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="marca" type="marcaType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="impresoraType">
+		<xs:sequence>
+			<xs:element name="marca" type="marcaType"/>
+			<xs:element name="modelo">
+				<xs:complexType>
+					<xs:attribute name="descatalogado" type="xs:boolean"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="precio" type="xs:int"/>
+			<xs:element name="fechaSalida" type="xs:date"/>
+			<xs:element name="cartuchosCompatibles">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="cartucho" type="cartuchoType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="cartuchoType">
+		<xs:sequence>
+			<xs:element name="modeloCartucho" type="xs:string"/>
+			<xs:element name="descripcion" type="xs:string"/>
+			<xs:element name="nombreMarca" type="xs:string"/>
+			<xs:element name="maxPaginas" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="marcaType">
+		<xs:sequence>
+			<xs:element name="nombre" type="xs:string"/>
+			<xs:element name="telefono" type="xs:integer"/>
+			<xs:element name="correoE" type="xs:string"/>
+			<xs:element name="direccion" type="direccionType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="direccionType">
+		<xs:sequence>
+			<xs:element name="calle" type="xs:string"/>
+			<xs:element name="poblacion" type="xs:string"/>
+			<xs:element name="cp" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
